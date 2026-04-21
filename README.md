@@ -13,8 +13,8 @@ As the name suggests its a basic microcoded Processor that can run basic program
 - The design is built with a hierarchical flow of instructions.
 - It is controlled by 8-bit instructions.
 - Each bit is given specific function to optimise the instruction set by using as less instructions as possible.
-- The full design is available here,   
-    [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SHMCP_4)  
+- The full simulation design is available here,   
+    [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SHMCP_4_simulation)  
 
 ---
 
@@ -40,7 +40,7 @@ As the name suggests its a basic microcoded Processor that can run basic program
 ### **Results :**
 #### **1. Simulation :**   
 ##### **Elaborated design**    
-![Failed to load the image!](SHMCP_4/doc/schematic.png "Elaborated design of SHMCP-4")  
+![Failed to load the image!](SHMCP_4_simulation/doc/schematic.png "Elaborated design of SHMCP-4")  
 
 ##### **Test sequence**
 ```sv ,
@@ -74,7 +74,7 @@ end
 
 ##### **Waveform**
 
-![Failed to load the image!](SHMCP_4/doc/waveform.png "Loading...")
+![Failed to load the image!](SHMCP_4_simulation/doc/waveform.png "Simulation waveform")
 
 #### **2. Implimentation :**
     FPGA implementation is yet to be done but will be updated once completed..!
