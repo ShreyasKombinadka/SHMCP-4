@@ -2,7 +2,7 @@ module ALU_unit (
     input clk,
     input grst,                 // Global reset
     input [3:0] instr,          // Instruction
-    inout [3:0] bus             // Data bus
+    inout [3:0] bus,            // Data bus
     output [3:0] rega_disp,     // Regsiter data to show on the display
     output [3:0] regb_disp,     // Regsiter data to show on the display
     output [3:0] regop_disp,    // Regsiter data to show on the display
