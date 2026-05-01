@@ -6,6 +6,8 @@ module prog_count (
     output [3:0] pc // Instruction mem pointer
 );
 
+reg load_prev ;
+
 integer i = 0 ;
 
 always @( state )
@@ -17,6 +19,7 @@ always @( posedge clk or posedge rst )
 begin
     if ( rst )
     begin
+        load_prev <= 0 ;
         i <= 1 ;
     end
     else if ( state )
@@ -34,12 +37,14 @@ begin
             i <= 16 ;
         end
     end
-    else if ( ( ~state ) && ( load ) )
+    else if ( ( ~state ) && ( load != load_prev && load ) && ( i <= 15 ) )
     begin
-        if ( i <= 15 )
-        begin
-            i <= i + 1 ;
-        end
+        i <= i + 1 ;
+    end
+
+    if( load != load_prev )
+    begin
+        load_prev <= load ;
     end
 end
 

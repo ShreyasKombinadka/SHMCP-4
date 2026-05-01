@@ -28,13 +28,21 @@ initial begin
     rst = 1 ; state = 0 ; load = 0 ; instr = 0 ;
     @( negedge dut.clk ) ; rst = 0 ; 
     @( negedge dut.clk ) ; instr = 8'h0F ; load = 1 ;
-    @( negedge dut.clk ) ; instr = 8'h2A ;  // 10 -> A
-    @( negedge dut.clk ) ; instr = 8'h41 ;  // 1 -> B
-    @( negedge dut.clk ) ; instr = 8'h0D ;  // SUB ( A - B )
-    @( negedge dut.clk ) ; instr = 8'h07 ;  // R -> X1
-    @( negedge dut.clk ) ; instr = 8'h34 ;  // JNZ
-    @( negedge dut.clk ) ; instr = 8'h06 ;  // R -> A
-    @( negedge dut.clk ) ; instr = 8'h00 ;  // NOP
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h2A ; load = 1 ;  // 10 -> A
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h41 ; load = 1 ;  // 1 -> B
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h0D ; load = 1 ;  // SUB ( A - B )
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h07 ; load = 1 ;  // R -> X1
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h34 ; load = 1 ;  // JNZ
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h06 ; load = 1 ;  // R -> A
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h00 ; load = 1 ;  // NOP
+    @( negedge dut.clk ) ; load = 0 ;
     
     @(negedge dut.clk) ; state = 1 ; load = 0 ; // Run the programm
     repeat(40) @(negedge dut.clk) ; $finish ;
