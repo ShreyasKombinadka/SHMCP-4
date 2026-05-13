@@ -22,14 +22,17 @@ begin
             instr_mem[i] <= 8'b0 ;
         end
     end
-    else if ( ( ~state ) && ( load == 1 && load != load_prev ) && ( pc > 0 ) )
+    else
     begin
-        instr_mem[pc] <= instr_i ; // write instruction to memory
-    end
+        if ( ( ~state ) && ( load == 1 && load != load_prev ) && ( pc > 0 ) )
+        begin
+            instr_mem[pc] <= instr_i ; // write instruction to memory
+        end
 
-    if( load != load_prev )
-    begin
-        load_prev <= load ;
+        if( load != load_prev )
+        begin
+            load_prev <= load ;
+        end
     end
 end
 

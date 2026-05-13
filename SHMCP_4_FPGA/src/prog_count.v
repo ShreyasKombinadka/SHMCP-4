@@ -6,14 +6,10 @@ module prog_count (
     output [3:0] pc // Instruction mem pointer
 );
 
+reg state_prev ;
 reg load_prev ;
 
-integer i = 0 ;
-
-always @( state )
-begin
-    i <= 0 ;    // Start loading or execution from start
-end
+reg [3:0] i ;
 
 always @( posedge clk or posedge rst )
 begin
@@ -22,29 +18,29 @@ begin
         load_prev <= 0 ;
         i <= 1 ;
     end
-    else if ( state )
+    else
     begin
-        if ( pc_count != 0 )
-        begin
-            i <= pc_count ;    // Jump to the pointed address
-        end
-        else if ( ( pc_count == 0 ) && ( i < 15 ) )    // No jump instructions
-        begin
-            i <= i + 1 ;    // Incriment address
-        end
-        else
-        begin
-            i <= 16 ;
-        end
-    end
-    else if ( ( ~state ) && ( load != load_prev && load ) && ( i <= 15 ) )
-    begin
-        i <= i + 1 ;
-    end
+        if (state && state != state_prev) i <= 0 ;
+        else if (~state && state != state_prev) i <= 1 ;
 
-    if( load != load_prev )
-    begin
-        load_prev <= load ;
+        else if (state)
+        begin
+            if (pc_count != 0)
+            begin
+                i <= pc_count ;    // Jump to the pointed address
+            end
+            else if ( ( pc_count == 0 ) && ( i < 15 ) )    // No jump instructions
+            begin
+                i <= i + 1 ;    // Incriment address
+            end
+            else i <= 16 ;
+        end
+
+        else if (~state  && load != load_prev && load && i <= 15) i <= i + 1 ;
+
+        if( load != load_prev ) load_prev <= load ;
+        if (state != state_prev) state_prev <= state ;
+
     end
 end
 

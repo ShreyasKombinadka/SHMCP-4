@@ -4,35 +4,63 @@ module clk_2stage
 )(
     input clk_in,
     input rst,
+    input state,
     output reg clk_out
 );
 
-localparam cycles_l = $clog2($sqrt(clk_freq) + 1);
-reg [(cycles_l - 1):0] cycles = $sqrt(clk_freq);
+reg state_prev ;
 
-reg [9:0] count1;
-reg [9:0] count2;
+localparam cycles0_l = $clog2((clk_freq / 2) + 1);
+reg [(cycles0_l - 1):0] cycles0 = (clk_freq / 2);
+
+localparam cycles1_l = $clog2($sqrt(clk_freq) + 1);
+reg [(cycles1_l - 1):0] cycles1 = $sqrt(clk_freq);
+
+reg [(cycles0_l - 1):0] count0;
+reg [(cycles1_l - 1):0] count1_1;
+reg [(cycles1_l - 1):0] count1_2;
 
 always @(posedge clk_in or posedge rst)
 begin
     if(rst)
     begin
-        count1 <= 0;
-        count2 <= 0;
+        count0 <= 0;
+        count1_1 <= 0;
+        count1_2 <= 0;
         clk_out <= 0;
     end
     else
     begin
-        count1 <= count1 + 1;
-        if(count1 >= cycles)
+        if(~state)
         begin
-            count1 <= 0;
-            count2 <= count2 + 1;
-            if(count2 >= cycles)
+            count0 <= count0 + 1;
+            if(count0 >= cycles0)
             begin
-                count2 <= 0;
+                count0 <= 0;
                 clk_out <= clk_out ^ 1;
             end
+        end
+        else
+        begin
+            count1_1 <= count1_1 + 1;
+            if(count1_1 >= cycles1)
+            begin
+                count1_1 <= 0;
+                count1_2 <= count1_2 + 1;
+                if(count1_2 >= cycles1)
+                begin
+                    count1_2 <= 0;
+                    clk_out <= clk_out ^ 1;
+                end
+            end
+        end
+
+        if(state != state_prev)
+        begin
+            state_prev <= state;
+            count0 <= 0;
+            count1_1 <= 0;
+            count1_2 <= 0;
         end
     end
 end
