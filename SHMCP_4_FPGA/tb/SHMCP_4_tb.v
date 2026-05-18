@@ -6,11 +6,12 @@ reg state ; // Enable for instruction load
 reg load ;  // Instruction load enable
 reg [7:0] instr ;   // Instruction input
 wire [3:0] regR_disp ;
+wire state_o ;
 
 localparam clk_freq = 10_000;
 
 SHMCP_4 #(.clk_freq(clk_freq)) dut ( .clk_in(clk), .rst(rst), .state(state), .load(load), .instr(instr),
-                .regR_disp(regR_disp));
+                .regR_disp(regR_disp), .state_o(state_o));
 
 initial clk = 0 ;
 always #1 clk = ~clk ;

@@ -1,7 +1,7 @@
 module Datapath (
     input clk, grst,            // Clock and Reset
     input [7:0] instr,          // Instruction
-    inout [3:0] bus,            // Data bus
+    output reg z_flag,              // Data bus
     output [3:0] regA_disp,     // Regsiter data to show on the display
     output [3:0] regB_disp,     // Regsiter data to show on the display
     output [3:0] regOP_disp,    // Regsiter data to show on the display
@@ -11,6 +11,8 @@ module Datapath (
     output [3:0] regR_disp,     // Regsiter data to show on the display
     output [3:0] regF_disp      // Regsiter data to show on the display
 );
+
+wire [3:0] bus; // Data bus
 
 //-----------------------------------------------------
 // ROM
@@ -36,5 +38,11 @@ ALU_unit ALU ( .clk(clk), .grst(grst), .instr(instr_a), .bus(bus),
 // RAM
 //-----------------------------------------------------
 RAM ram ( .clk(clk), .rst(grst), .instr(instr), .bus(bus) );
+
+always @(*)
+begin
+    if(instr == 10) z_flag <= bus[0]; // Zero flag for ctrl unit
+    else z_flag <= 0;
+end
 
 endmodule

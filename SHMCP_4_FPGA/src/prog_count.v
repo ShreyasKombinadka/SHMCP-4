@@ -16,6 +16,7 @@ begin
     if ( rst )
     begin
         load_prev <= 0 ;
+        state_prev <= 0;
         i <= 1 ;
     end
     else

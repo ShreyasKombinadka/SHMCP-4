@@ -1,10 +1,10 @@
 module ctrl_unit (
     input clk, rst,
-    input state,    // State of the processor
-    input load, // Enable for instruction load
+    input state,            // State of the processor
+    input load,             // Enable for instruction load
+    input z_flag,           // Zero flag
     input [7:0] instr_i,    // Instruction input
-    output [7:0] instr, // Instruction for the datapath
-    inout [3:0] bus // Data bus
+    output [7:0] instr      // Instruction for the datapath
 );
 
 //-----------------------------------------------------
@@ -23,6 +23,6 @@ prog_count pc ( .clk(clk), .rst(rst), .state(state), .load(load), .pc_count(pc_j
 //-----------------------------------------------------
 // Jump statement handler
 //-----------------------------------------------------
-pc_ctrl ctrl ( .instr_o(instr_o), .pc_count(pc_j), .instr(instr), .bus(bus) );
+pc_ctrl ctrl ( .instr_o(instr_o), .pc_count(pc_j), .instr(instr), .z_flag(z_flag) );
 
 endmodule
