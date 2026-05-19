@@ -5,20 +5,23 @@ reg clk, rst ;  // Clock and Reset
 reg state ; // Enable for instruction load
 reg load ;  // Instruction load enable
 reg [7:0] instr ;   // Instruction input
-wire [3:0] regR_disp ;
+reg [2:0] sel ;
+wire [3:0] reg_disp ;
 wire state_o ;
+wire load_o ;
 
 localparam clk_freq = 10_000;
 
-SHMCP_4 #(.clk_freq(clk_freq)) dut ( .clk_in(clk), .rst(rst), .state(state), .load(load), .instr(instr),
-                .regR_disp(regR_disp), .state_o(state_o));
+SHMCP_4 #(.clk_freq(clk_freq)) dut ( .clk_in(clk), .rst(rst),
+        .state(state), .load(load), .instr(instr), .sel(sel),
+        .reg_disp(reg_disp), .state_o(state_o), .load_o(load_o));
 
 initial clk = 0 ;
 always #1 clk = ~clk ;
 
 initial begin
 
-    rst = 1 ; state = 0 ; load = 0 ; instr = 0 ;
+    rst = 1 ; state = 0 ; load = 0 ; instr = 0 ; sel = 0 ;
     @( negedge dut.clk ) ; rst = 0 ; 
     @( negedge dut.clk ) ; instr = 8'h0F ; load = 1 ;
     @( negedge dut.clk ) ; load = 0 ;
