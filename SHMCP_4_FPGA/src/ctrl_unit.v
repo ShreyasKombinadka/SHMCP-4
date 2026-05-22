@@ -5,7 +5,8 @@ module ctrl_unit (
     input z_flag,           // Zero flag
     input [7:0] instr_i,    // Instruction input
     output [7:0] instr,     // Instruction for the datapath
-    output [3:0] pc_o
+    output [3:0] pc_o,
+    output trm
 );
 
 //-----------------------------------------------------
@@ -19,7 +20,7 @@ instr_mem memory ( .clk(clk), .rst(rst), .state(state), .load(load), .pc(pc_out)
 // Program counter
 //-----------------------------------------------------
 wire [3:0] pc_jmp ;   // Jump address
-prog_count pc ( .clk(clk), .rst(rst), .state(state), .load(load), .pc_count(pc_jmp), .pc(pc_out) );
+prog_count pc ( .clk(clk), .rst(rst), .state(state), .load(load), .instr(instr_o), .pc_count(pc_jmp), .pc(pc_out), .trm(trm));
 
 //-----------------------------------------------------
 // Jump statement handler
