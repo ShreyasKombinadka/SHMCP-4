@@ -39,7 +39,7 @@ begin
 
         else if(state)
         begin
-            if(instr == 0 && nop_c <= 3 && nop_c) nop_c <= nop_c + 1;
+            if(instr == 0 && nop_c <= 3 && ~nop_c) nop_c <= nop_c + 1;
             else nop_c <= 0;
 
             if(i == 15 || nop_c >= 3) trm <= 1;
