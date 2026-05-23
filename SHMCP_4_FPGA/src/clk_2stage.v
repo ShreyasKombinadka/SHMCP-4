@@ -9,7 +9,7 @@ module clk_2stage
     output clk_o
 );
 
-reg state_prev ;
+reg state_prev;
 
 localparam cycles0_l = $clog2((clk_freq / 2) + 1);
 
@@ -33,6 +33,14 @@ begin
     end
     else
     begin
+        if(state != state_prev)
+        begin
+            state_prev <= state;
+            count0 <= 0;
+            count1_1 <= 0;
+            count1_2 <= 0;
+        end
+        
         if(~state)
         begin
             count0 <= count0 + 1;
@@ -56,14 +64,6 @@ begin
                 end
             end
         end
-    end
-
-    if(state != state_prev)
-    begin
-        state_prev <= state;
-        count0 <= 0;
-        count1_1 <= 0;
-        count1_2 <= 0;
     end
 end
 
