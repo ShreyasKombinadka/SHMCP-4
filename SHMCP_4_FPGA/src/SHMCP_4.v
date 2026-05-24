@@ -46,8 +46,8 @@ Datapath Data ( .clk(clk), .grst(rst), .instr(instr_o), .z_flag(z_flag),
 //-----------------------------------------------------
 // Data to display
 //-----------------------------------------------------
-wire [35:0] data_i = {regF_disp, regR_disp, regop_disp, regb_disp, rega_disp, regOP_disp, regB_disp, regA_disp, pc_o};
-out_mux #(.data_l(4), .data_c(9), .sel_l(3)) disp_outputs(.data_i(data_i), .sel(sel), .data_o(reg_disp));
+wire [31:0] data_i = {regF_disp, regR_disp, regop_disp, regb_disp, rega_disp, regB_disp, regA_disp, pc_o};
+out_mux #(.data_l(4), .data_c(8), .sel_l(3)) disp_outputs(.data_i(data_i), .sel(sel), .data_o(reg_disp));
 
 assign state_o = state;
 assign load_o = load;

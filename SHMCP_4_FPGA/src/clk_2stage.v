@@ -40,33 +40,35 @@ begin
             count1_1 <= 0;
             count1_2 <= 0;
         end
-        
-        if(~state)
-        begin
-            count0 <= count0 + 1;
-            if(count0 >= (clk_freq / 2))
-            begin
-                count0 <= 0;
-                clk_temp <= clk_temp ^ 1;
-            end
-        end
         else
         begin
-            count1_1 <= count1_1 + 1;
-            if(count1_1 >= sqrt_clk)
+            if(~state)
             begin
-                count1_1 <= 0;
-                count1_2 <= count1_2 + 1;
-                if(count1_2 >= sqrt_clk)
+                count0 <= count0 + 1;
+                if(count0 >= (clk_freq / 2))
                 begin
-                    count1_2 <= 0;
+                    count0 <= 0;
                     clk_temp <= clk_temp ^ 1;
+                end
+            end
+            else
+            begin
+                count1_1 <= count1_1 + 1;
+                if(count1_1 >= sqrt_clk)
+                begin
+                    count1_1 <= 0;
+                    count1_2 <= count1_2 + 1;
+                    if(count1_2 >= sqrt_clk)
+                    begin
+                        count1_2 <= 0;
+                        clk_temp <= clk_temp ^ 1;
+                    end
                 end
             end
         end
     end
 end
 
-assign clk_o = (~trm) ? clk_temp : 0;
+assign clk_o = (~trm || state != state_prev) ? clk_temp : 0;
 
 endmodule

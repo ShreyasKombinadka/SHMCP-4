@@ -33,6 +33,7 @@ begin
             else i <= 1;
 
             trm <= 0;
+            nop_c <= 0;
             state_prev <= state;
         end
         else

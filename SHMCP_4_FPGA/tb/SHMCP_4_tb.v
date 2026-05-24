@@ -23,7 +23,7 @@ always #1 clk = ~clk ;
 initial begin
 
     rst = 1 ; state = 0 ; load = 0 ; instr = 0 ; sel = 0 ;
-    repeat(50000) @( negedge dut.clk ) ; rst = 0 ; 
+    repeat(50000) @( negedge clk ) ; rst = 0 ; 
     @( negedge dut.clk ) ; instr = 8'h0F ; load = 1 ;
     @( negedge dut.clk ) ; load = 0 ;
     @( negedge dut.clk ) ; instr = 8'h2A ; load = 1 ;  // 10 -> A
@@ -43,7 +43,16 @@ initial begin
     
     @(negedge dut.clk) ; state = 1 ; load = 0 ; // Run the programm
     @(posedge trm_f) ;
-    repeat(50000) @(negedge clk) ; $finish ;
+    
+    rst = 1 ; state = 0 ; load = 0 ; instr = 0 ; sel = 0;
+    repeat(50000) @( negedge clk ) ; rst = 0; 
+    
+    repeat(50000) @(negedge clk) ; state = 1;    // Run the programm
+    @(posedge trm_f);
+    repeat(50000) @(negedge clk) ; state = 0;
+    repeat(50000) @(negedge clk) ; state = 1;
+    @(posedge trm_f) ;
+    repeat(50000) @(negedge clk) ; $finish;
 
 end
 
