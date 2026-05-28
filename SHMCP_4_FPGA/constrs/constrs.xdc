@@ -3,6 +3,7 @@ set_property BITSTREAM.Config.SPI_buswidth 4 [current_design]
 
 set_property IOSTANDARD LVCMOS33 [get_ports clk_in]
 set_property IOSTANDARD LVCMOS33 [get_ports rst]
+set_property IOSTANDARD LVCMOS33 [get_ports rbt]
 
 set_property IOSTANDARD LVCMOS33 [get_ports load]
 set_property IOSTANDARD LVCMOS33 [get_ports state]
@@ -31,6 +32,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports {sel[0]}]
 
 set_property PACKAGE_PIN R2 [get_ports clk_in]
 set_property PACKAGE_PIN G15 [get_ports rst]
+set_property PACKAGE_PIN K16 [get_ports rbt]
 
 set_property PACKAGE_PIN H13 [get_ports load]
 set_property PACKAGE_PIN H14 [get_ports state]

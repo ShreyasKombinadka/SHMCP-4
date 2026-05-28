@@ -10,6 +10,7 @@ module clk_2stage
 );
 
 reg state_prev;
+reg trm_state;
 
 localparam cycles0_l = $clog2((clk_freq / 2) + 1);
 
@@ -30,6 +31,7 @@ begin
         count1_2 <= 0;
         clk_temp <= 0;
         state_prev <= 0;
+        trm_state <= 0;
     end
     else
     begin
@@ -39,6 +41,7 @@ begin
             count0 <= 0;
             count1_1 <= 0;
             count1_2 <= 0;
+            trm_state <= (trm) ? 1 : 0;
         end
         else
         begin
@@ -65,10 +68,12 @@ begin
                     end
                 end
             end
+
+            if(~trm) trm_state <= 0;
         end
     end
 end
 
-assign clk_o = (~trm || state != state_prev) ? clk_temp : 0;
+assign clk_o = (~trm || trm_state) ? clk_temp : 0;
 
 endmodule

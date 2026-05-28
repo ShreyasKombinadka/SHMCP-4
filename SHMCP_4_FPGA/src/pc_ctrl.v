@@ -5,20 +5,19 @@ module pc_ctrl (
     output reg [7:0] instr      // Instruction out for datapath
 );
 
-always @( * )
+always @(*)
 begin
     pc_count = 0 ;
-    
-    if( ~instr_o[7] & instr_o[4] )  // The instruction for jump statement
+
+    if(~instr_o[7] & instr_o[4])  // The instruction for jump statement
     begin
         instr = 8'b0_00_0_1010 ; // FLAG -> BUS
 
-        case ( instr_o[6:5] )
+        case (instr_o[6:5])
             2'b01 : pc_count = (~z_flag) ? instr_o[3:0] : 0 ; // JNZ (jump if not equal to zero)
             2'b11 : pc_count = instr[3:0] ; // J (infinite loop)
             default : pc_count = 0 ;
         endcase
-        
     end
     else
     begin

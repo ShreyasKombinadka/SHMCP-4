@@ -1,5 +1,6 @@
 module ctrl_unit (
     input clk, rst,
+    input rbt,
     input state,            // State of the processor
     input load,             // Enable for instruction load
     input z_flag,           // Zero flag
@@ -20,12 +21,12 @@ instr_mem memory ( .clk(clk), .rst(rst), .state(state), .load(load), .pc(pc_out)
 // Program counter
 //-----------------------------------------------------
 wire [3:0] pc_jmp ;   // Jump address
-prog_count pc ( .clk(clk), .rst(rst), .state(state), .load(load), .instr(instr_o), .pc_count(pc_jmp), .pc(pc_out), .trm(trm));
+prog_count pc ( .clk(clk), .rsbt(rst || rbt), .state(state), .load(load), .instr(instr_o), .pc_count(pc_jmp), .pc(pc_out), .trm(trm));
 
 //-----------------------------------------------------
 // Jump statement handler
 //-----------------------------------------------------
-pc_ctrl ctrl ( .instr_o(instr_o), .pc_count(pc_jmp), .instr(instr), .z_flag(z_flag) );
+pc_ctrl ctrl (.instr_o(instr_o), .pc_count(pc_jmp), .instr(instr), .z_flag(z_flag));
 
 assign pc_o = pc_out;
 

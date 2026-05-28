@@ -1,5 +1,5 @@
 module prog_count (
-    input clk, rst,
+    input clk, rsbt,
     input state,    // State of programm
     input load, // Enable for instruction load
     input [3:0] pc_count,   // Jump address
@@ -15,23 +15,21 @@ reg [2:0] nop_c;
 
 reg [3:0] i;
 
-always @(posedge clk or posedge rst)
+always @(posedge clk or posedge rsbt)
 begin
-    if(rst)
+    if(rsbt)
     begin
         load_prev <= 0 ;
         state_prev <= 0;
         nop_c <= 0;
         trm <= 0;
-        i <= 0;
+        i <= 1;
     end
     else
     begin
         if(state != state_prev)
         begin
-            if(state) i <= 0;
-            else i <= 1;
-
+            i <= 1;
             trm <= 0;
             nop_c <= 0;
             state_prev <= state;
@@ -51,9 +49,7 @@ begin
             end
             else
             begin
-                if(i == 0) i <= 1;
-
-                else if(load != load_prev)
+                if(load != load_prev)
                 begin
                     if(load)
                     begin
