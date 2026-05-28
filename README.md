@@ -33,7 +33,7 @@ As the name suggests its a basic microcoded Processor that can run basic program
 - [x] Design
 - [x] Building in verilog
 - [x] Testing & verification
-- [ ] Implementation in FPGA board
+- [x] Implementation in FPGA board
 
 ---
 
