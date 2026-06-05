@@ -13,8 +13,8 @@ As the name suggests its a basic microcoded Processor that can run basic program
 - The design is built with a hierarchical flow of instructions.
 - It is controlled by 8-bit instructions.
 - Each bit is given specific function to optimise the instruction set by using as less instructions as possible.
-- The full simulation design is available here,   
-    [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SHMCP_4_SIM)  
+- The full FPGA design is available here,   
+    [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/FPGA/SHMCP_4)  
 
 ---
 
@@ -40,44 +40,79 @@ As the name suggests its a basic microcoded Processor that can run basic program
 ### **Results :**
 #### **1. Simulation :**   
 ##### **Elaborated design**    
-![Failed to load the image!](SHMCP_4_SIM/doc/schematic.png "Elaborated design of SHMCP-4")  
+![Failed to load the image!](FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
 ##### **Test sequence**
 ```sv ,
 {
-    clk, rst ;  // Clock and Reset
-    state ; // Enable for instruction load
-    load ;  // Instruction load enable
-    [7:0] instr ;   // Instruction input
+    input clk_in, rst,      // Clock and Reset
+    input rbt,
+    input state,            // State of the CPU
+    input load,             // Enable for instruction load
+    input [7:0] instr,      // Instruction input
+    input [2:0] sel,
+    output [3:0] reg_disp,
+    output state_o,
+    output load_o,
+    output trm_f
 
 }
 
-begin
+initial clk = 0 ;
+always #1 clk = ~clk ;
 
-    rst = 1 ; state = 0 ; load = 0 ; instr = 0 ;
-    @( negedge clk ) ; rst = 0 ; instr = 8'h0F ; load = 1 ;
-    @( negedge clk ) ; instr = 8'h2A ;  // 10 -> A
-    @( negedge clk ) ; instr = 8'h41 ;  // 1 -> B
-    @( negedge clk ) ; instr = 8'h0D ;  // ADD ( A - B )
-    @( negedge clk ) ; instr = 8'h07 ;  // R -> X1
-    @( negedge clk ) ; instr = 8'h34 ;  // JNZ
-    @( negedge clk ) ; instr = 8'h06 ;  // R -> A
-    @( negedge clk ) ; instr = 8'h00 ;  // NOP
+initial begin
+
+    rst = 1 ; rbt = 0 ;
+    state = 0 ; load = 0 ; instr = 0 ; sel = 7;
+
+    repeat(1000) @( negedge clk ) ; rst = 0 ; 
+    @( negedge dut.clk ) ; instr = 8'h0F ; load = 1 ;
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h2A ; load = 1 ;  // 10 -> A
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h41 ; load = 1 ;  // 1 -> B
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h0D ; load = 1 ;  // SUB ( A - B )
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h07 ; load = 1 ;  // R -> X1
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h34 ; load = 1 ;  // JNZ
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h06 ; load = 1 ;  // R -> A
+    @( negedge dut.clk ) ; load = 0 ;
+    @( negedge dut.clk ) ; instr = 8'h00 ; load = 1 ;  // NOP
+    @( negedge dut.clk ) ; load = 0 ;
     
-    #10
-    @( negedge clk ) ; state = 1 ; load = 0 ;   // Run the programm
-    #400 ; $finish ;
+    @(negedge dut.clk) ; state = 1 ; load = 0 ; // Run the programm
+    repeat(50000) @( negedge clk ) ; rbt = 1 ;
+    repeat(1000) @( negedge clk ) ; rbt = 0;
+    @(posedge trm_f) ;
+    repeat(50000) @( negedge clk ) ; state = 0 ; load = 0 ; instr = 0 ; sel = 0;
+    
+    repeat(50000) @( negedge clk ) ; rst = 1 ;
+    repeat(1000) @( negedge clk ) ; rst = 0; 
+    
+    repeat(50000) @(negedge clk) ; state = 1;    // Run the programm
+    @(posedge trm_f);
+    repeat(50000) @(negedge clk) ; state = 0;
+    repeat(50000) @(negedge clk) ; state = 1;
+    @(posedge trm_f) ;
+    repeat(50000) @(negedge clk) ; $finish;
 
 end
 
 ```
 
 ##### **Waveform**
-
-![Failed to load the image!](SHMCP_4_SIM/doc/waveform.png "Simulation waveform")
+![Failed to load the image!](FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
 
 #### **2. Implimentation :**
-    FPGA implementation is yet to be done but will be updated once completed..!
+##### **Schematic**
+![Failed to load the image!](FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
+
+##### **Reports**
+
 
 ---
 
