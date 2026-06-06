@@ -47,7 +47,7 @@ The final block of the code which combines all the lower modules to form a proce
 ---
 
 ### **Elaborated design :**
-![Failed to load the image!](./doc/SIM_schematic.png "Elaborated schematic")
+![Failed to load the image!](./doc/sim_schematic.png "Elaborated schematic")
 
 ---
  
