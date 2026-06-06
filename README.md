@@ -7,7 +7,7 @@ As the name suggests its a basic microcoded Processor that can run basic program
  
 ### **Overview :**
 - The processor is designed from scratch.
-- The Processor operates on 4-bit data.
+- It operates on 4-bit data.
 - Has custom ISA built from ground up to perforom specific operations.
 - It follows Harvard architecture.
 - The design is built with a hierarchical flow of instructions.
@@ -32,17 +32,17 @@ As the name suggests its a basic microcoded Processor that can run basic program
 ### **Progress :**  
 - [x] Design
 - [x] Building in verilog
-- [x] Testing & verification
-- [x] Implementation in FPGA board
+- [x] Testing & verification(Vivado)
+- [x] Implementation in FPGA board(Spartan-7)
 
 ---
 
 ### **Results :**
-#### **1. Simulation :**   
-##### **Elaborated design**    
+#### **1 Simulation :**   
+##### **1.1 Elaborated design**    
 ![Failed to load the image!](FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
-##### **Test sequence**
+##### **1.2 Test sequence**
 ```sv ,
 {
     input clk_in, rst,      // Clock and Reset
@@ -104,15 +104,20 @@ end
 
 ```
 
-##### **Waveform**
+##### **1.3 Waveform**
 ![Failed to load the image!](FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
 
-#### **2. Implimentation :**
-##### **Schematic**
+#### **2 Implimentation :**
+##### **2.1 Schematic**
 ![Failed to load the image!](FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
 
-##### **Reports**
-
+##### **2.2 Reports :**
+###### **2.2.1 Power**
+![Failed to load the image!](FPGA/SHMCP_4/doc/power.png "Power")
+###### **2.2.2 Timing**
+![Failed to load the image!](FPGA/SHMCP_4/doc/timing.png "Timing")
+###### **2.2.3 Utilization**
+![Failed to load the image!](FPGA/SHMCP_4/doc/utilization.png "Utilization")
 
 ---
 

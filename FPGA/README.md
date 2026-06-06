@@ -1,7 +1,7 @@
 
 # **Simple Hierarchical MicroCode Processor - 4bit ( SHMCP-4 )**
 
-As the name suggests its a basic microcoded Processor that can run basic programs, i built it to get an basic understanding of computer architecture and it was also fun to design and build.   
+This is the FPGA implimentation dessign of the SHMCP4 for Spartan-7 FPGA.   
 
 ---
  
@@ -13,57 +13,42 @@ As the name suggests its a basic microcoded Processor that can run basic program
 - The design is built with a hierarchical flow of instructions.
 - It is controlled by 8-bit instructions.
 - Each bit is given specific function to optimise the instruction set by using as less instructions as possible.
-- The full simulation design is available here,   
+- The full design is available here,   
     [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/FPGA/SHMCP_4)  
 
 ---
 
-### **Features :**
-- 4-bit datapath with Harvard architecture.
-- Hierarchical microcode control (3-tier ROM decode).
-- Programmable instruction memory (15 locations).
-- Data RAM (16 locations, 0-15).
-- Complete ALU (7 logic ops + 2 arithmetic).
-- Conditional branching (JNZ, J)
-- Custom ISA optimized for minimal instruction encoding.
+### **Instruction set :**
+
+| Hex code  | Operation          |
+|:---------:|:------------------:|
+| 00        | NOP                |
+| 01        | MOV A, B           |
+| 02        | MOV A, X1          |
+| 03        | MOV B, A           |
+| 04        | MOV B, X2          |
+| 05        | MOV OP, X3         |
+| 06        | MOV R, A           |
+| 07        | MOV R, X1          |
+| 08        | MOV R, B           |
+| 09        | MOV R, X2          |
+| 0A        | MOV F, BUS         |
+| 0B        | LOGIC              |
+| 0C        | ADD                |
+| 0D        | SUB                |
+| 0F        | CLEAR              |
+| 20 - 2F	| LDI A & X1         |
+| 40 - 4F	| LDI B & X2         |
+| 60 - 6F	| LDI OP & X3        |
+| A0 - AF	| MOV MEM, A         |
+| B0 - BF	| MOV A, MEM         |
+| C0 - CF	| MOV MEM, B         |
+| D0 - DF	| MOV B, MEM         |
+| F0 - FF	| MOV R, MEM         |
+| 30 - 3F	| JNZ                |
+| 70 - 7F	| J                  |
 
 ---
-
-### **Results :**
-#### **1. Simulation :**   
-##### **Elaborated design**    
-![Failed to load the image!](SHMCP_4/doc/schematic.png "Elaborated design of SHMCP-4")  
-
-##### **Test sequence**
-```sv ,
-{
-    clk, rst ;  // Clock and Reset
-    state ; // Enable for instruction load
-    load ;  // Instruction load enable
-    [7:0] instr ;   // Instruction input
-
-}
-
-begin
-
-    rst = 1 ; state = 0 ; load = 0 ; instr = 0 ;
-    @( negedge clk ) ; rst = 0 ; instr = 8'h0F ; load = 1 ;
-    @( negedge clk ) ; instr = 8'h2A ;  // 10 -> A
-    @( negedge clk ) ; instr = 8'h41 ;  // 1 -> B
-    @( negedge clk ) ; instr = 8'h0D ;  // ADD ( A - B )
-    @( negedge clk ) ; instr = 8'h07 ;  // R -> X1
-    @( negedge clk ) ; instr = 8'h34 ;  // JNZ
-    @( negedge clk ) ; instr = 8'h06 ;  // R -> A
-    @( negedge clk ) ; instr = 8'h00 ;  // NOP
-    
-    #10
-    @( negedge clk ) ; state = 1 ; load = 0 ;   // Run the programm
-    #400 ; $finish ;
-
-end
-
-```
-
-##### **Waveform**
-
-![Failed to load the image!](SHMCP_4/doc/waveform.png "Simulation waveform")
+ 
+### **Elaborated design**    
+![Failed to load the image!](SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
