@@ -29,6 +29,38 @@ As the name suggests its a basic microcoded Processor that can run basic program
 
 ---
 
+### **Instruction set :**
+
+| Hex code  | Operation          |
+|:---------:|:------------------:|
+| 00        | NOP                |
+| 01        | MOV A, B           |
+| 02        | MOV A, X1          |
+| 03        | MOV B, A           |
+| 04        | MOV B, X2          |
+| 05        | MOV OP, X3         |
+| 06        | MOV R, A           |
+| 07        | MOV R, X1          |
+| 08        | MOV R, B           |
+| 09        | MOV R, X2          |
+| 0A        | MOV F, BUS         |
+| 0B        | LOGIC              |
+| 0C        | ADD                |
+| 0D        | SUB                |
+| 0F        | CLEAR              |
+| 20 - 2F	| LDI A & X1         |
+| 40 - 4F	| LDI B & X2         |
+| 60 - 6F	| LDI OP & X3        |
+| A0 - AF	| MOV MEM, A         |
+| B0 - BF	| MOV A, MEM         |
+| C0 - CF	| MOV MEM, B         |
+| D0 - DF	| MOV B, MEM         |
+| F0 - FF	| MOV R, MEM         |
+| 30 - 3F	| JNZ                |
+| 70 - 7F	| J                  |
+
+---
+
 ### **Progress :**  
 - [x] Design
 - [x] Building in verilog
@@ -42,67 +74,19 @@ As the name suggests its a basic microcoded Processor that can run basic program
 ##### **1.1 Elaborated design**    
 ![Failed to load the image!](FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
-##### **1.2 Test sequence**
-```sv ,
-{
-    input clk_in, rst,      // Clock and Reset
-    input rbt,
-    input state,            // State of the CPU
-    input load,             // Enable for instruction load
-    input [7:0] instr,      // Instruction input
-    input [2:0] sel,
-    output [3:0] reg_disp,
-    output state_o,
-    output load_o,
-    output trm_f
+##### **1.2 Test Programm**
+##### 1.2.1 Down counter
+| Hex code  | Operation          |
+|:---------:|:------------------:|
+| 0F        | CLEAR              |
+| 2A        | 10 -> A & a        |
+| 41        | 1 -> B & b         |
+| 0D        | SUB (a - b)        |
+| 07        | R -> X1            |
+| 34        | JNZ                |
+| 06        | R -> A             |
+| 00        | NOP                |
 
-}
-
-initial clk = 0 ;
-always #1 clk = ~clk ;
-
-initial begin
-
-    rst = 1 ; rbt = 0 ;
-    state = 0 ; load = 0 ; instr = 0 ; sel = 7;
-
-    repeat(1000) @( negedge clk ) ; rst = 0 ; 
-    @( negedge dut.clk ) ; instr = 8'h0F ; load = 1 ;
-    @( negedge dut.clk ) ; load = 0 ;
-    @( negedge dut.clk ) ; instr = 8'h2A ; load = 1 ;  // 10 -> A
-    @( negedge dut.clk ) ; load = 0 ;
-    @( negedge dut.clk ) ; instr = 8'h41 ; load = 1 ;  // 1 -> B
-    @( negedge dut.clk ) ; load = 0 ;
-    @( negedge dut.clk ) ; instr = 8'h0D ; load = 1 ;  // SUB ( A - B )
-    @( negedge dut.clk ) ; load = 0 ;
-    @( negedge dut.clk ) ; instr = 8'h07 ; load = 1 ;  // R -> X1
-    @( negedge dut.clk ) ; load = 0 ;
-    @( negedge dut.clk ) ; instr = 8'h34 ; load = 1 ;  // JNZ
-    @( negedge dut.clk ) ; load = 0 ;
-    @( negedge dut.clk ) ; instr = 8'h06 ; load = 1 ;  // R -> A
-    @( negedge dut.clk ) ; load = 0 ;
-    @( negedge dut.clk ) ; instr = 8'h00 ; load = 1 ;  // NOP
-    @( negedge dut.clk ) ; load = 0 ;
-    
-    @(negedge dut.clk) ; state = 1 ; load = 0 ; // Run the programm
-    repeat(50000) @( negedge clk ) ; rbt = 1 ;
-    repeat(1000) @( negedge clk ) ; rbt = 0;
-    @(posedge trm_f) ;
-    repeat(50000) @( negedge clk ) ; state = 0 ; load = 0 ; instr = 0 ; sel = 0;
-    
-    repeat(50000) @( negedge clk ) ; rst = 1 ;
-    repeat(1000) @( negedge clk ) ; rst = 0; 
-    
-    repeat(50000) @(negedge clk) ; state = 1;    // Run the programm
-    @(posedge trm_f);
-    repeat(50000) @(negedge clk) ; state = 0;
-    repeat(50000) @(negedge clk) ; state = 1;
-    @(posedge trm_f) ;
-    repeat(50000) @(negedge clk) ; $finish;
-
-end
-
-```
 
 ##### **1.3 Waveform**
 ![Failed to load the image!](FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
@@ -112,11 +96,11 @@ end
 ![Failed to load the image!](FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
 
 ##### **2.2 Reports :**
-###### **2.2.1 Power**
+##### 2.2.1 Power
 ![Failed to load the image!](FPGA/SHMCP_4/doc/power.png "Power")
-###### **2.2.2 Timing**
+##### 2.2.2 Timing
 ![Failed to load the image!](FPGA/SHMCP_4/doc/timing.png "Timing")
-###### **2.2.3 Utilization**
+##### 2.2.3 Utilization
 ![Failed to load the image!](FPGA/SHMCP_4/doc/utilization.png "Utilization")
 
 ---

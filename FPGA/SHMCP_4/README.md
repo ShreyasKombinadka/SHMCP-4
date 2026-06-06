@@ -111,7 +111,7 @@ begin
     @( negedge dut.clk ) ; load = 0;
     @( negedge dut.clk ) ; instr = 8'h2A ; load = 1;  // 10 -> A & a
     @( negedge dut.clk ) ; load = 0;
-    @( negedge dut.clk ) ; instr = 8'h41 ; load = 1;  // 1 -> B & a
+    @( negedge dut.clk ) ; instr = 8'h41 ; load = 1;  // 1 -> B & b
     @( negedge dut.clk ) ; load = 0;
     @( negedge dut.clk ) ; instr = 8'h0D ; load = 1;  // SUB ( A(a) - B(b) )
     @( negedge dut.clk ) ; load = 0;
