@@ -6,8 +6,8 @@ The final block of the code which combines all the blocks to form a processer.
 - The final processor is completed by connecting the control and datapath blocks.   
 - The processor is programmable by using the state and load signals.    
 - For more info on the working of Control and Datapath units,   
-    [**Control unit**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/control_unit)    
-    [**Datapath**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/Datapath)    
+    [**Control unit**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/control_unit)    
+    [**Datapath**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/Datapath)    
 
 ---
 

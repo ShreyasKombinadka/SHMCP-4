@@ -3,7 +3,7 @@ module SHMCP_4  // Simple Hierarchical MicroCode Processor - 4bit
     parameter clk_freq = 100_000_000    // Onboard clk frequency
 )(
     input clk_in, rst,      // Clock and Reset
-    input rbt,
+    input rbt,              // Reboot
     input state,            // State of the CPU
     input load,             // Enable for instruction load
     input [7:0] instr,      // Instruction input

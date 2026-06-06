@@ -7,15 +7,15 @@ Combines Register file, ALU unit, RAM and ROM to form the complete dataflow path
 - By combining all the data blocks makes it easier to interface with the main coontrol unit.
 - The instructions will be given to the Datapath by the control unit where it will be passed to the data units.
 - For more info on each part,   
-    [**ROM**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/ROM)    
-    [**Register file**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/Register_file)    
-    [**ALU unit**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/ALU_unit)    
-    [**RAM**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/RAM)
+    [**ROM**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/ROM)    
+    [**Register file**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/Register_file)    
+    [**ALU unit**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/ALU_unit)    
+    [**RAM**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/RAM)
 
 ---
 
 ### **Elaborated design :**
-![Failed to load the image!](./doc/schematic.png "Loading...")
+![Failed to load the image!](./doc/schematic.png "Elaborated schematic")
 
 ---
  
@@ -82,4 +82,4 @@ end
 
 #### **Waveform :**
 
-![Failed to load the image!](./doc/waveform.png "Loading...")
+![Failed to load the image!](./doc/waveform.png "Simulation waveform")

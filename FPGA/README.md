@@ -14,7 +14,7 @@ As the name suggests its a basic microcoded Processor that can run basic program
 - It is controlled by 8-bit instructions.
 - Each bit is given specific function to optimise the instruction set by using as less instructions as possible.
 - The full simulation design is available here,   
-    [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SHMCP_4_SIM)  
+    [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/FPGA/SHMCP_4)  
 
 ---
 

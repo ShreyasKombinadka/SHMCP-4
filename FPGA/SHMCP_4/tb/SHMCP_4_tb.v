@@ -1,16 +1,16 @@
 `timescale 1ns / 1ps
 
 module SHMCP_4_tb;
-reg clk, rst;  // Clock and Reset
-reg rbt;
-reg state; // Enable for instruction load
-reg load;  // Instruction load enable
-reg [7:0] instr;   // Instruction input
-reg [2:0] sel;
-wire [3:0] reg_disp;
-wire state_o;
-wire load_o;
-wire trm_f;
+reg clk, rst;           // Clock and Reset
+reg rbt;                // Reboot
+reg state;              // Enable for instruction load
+reg load;               // Instruction load enable
+reg [7:0] instr;        // Instruction input
+reg [2:0] sel;          // Output select lines
+wire [3:0] reg_disp;    // Output to display
+wire state_o;           // State output
+wire load_o;            // Load output
+wire trm_f;             // Termination flag out
 
 localparam clk_freq = 10_000;   // Test clock frequency
 
