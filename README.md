@@ -1,7 +1,7 @@
 
 # **Simple Hierarchical MicroCode Processor - 4bit ( SHMCP-4 )**
 
-As the name suggests its a basic microcoded Processor that can run basic programs, i built it to get an basic understanding of computer architecture and it was also fun to design and build.   
+A custom 4-bit processor with Harvard architecture and a custom ISA, built from scratch — capable of loading and executing programs on real FPGA hardware.   
 
 ---
  
@@ -15,7 +15,8 @@ As the name suggests its a basic microcoded Processor that can run basic program
 - Each bit is given specific function to optimise the instruction set by using as less instructions as possible.
 - The full FPGA design is available here,   
     [**SHMCP_4**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/FPGA/SHMCP_4)  
-
+- Working video :
+    >Will be updated with the video soon..!
 ---
 
 ### **Features :**
@@ -72,7 +73,7 @@ As the name suggests its a basic microcoded Processor that can run basic program
 ### **Results :**
 #### **1 Simulation :**   
 ##### **1.1 Elaborated design**    
-![Failed to load the image!](FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
+![Failed to load the image!](./FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
 ##### **1.2 Test Programm**
 ##### 1.2.1 Down counter
@@ -89,19 +90,19 @@ As the name suggests its a basic microcoded Processor that can run basic program
 
 
 ##### **1.3 Waveform**
-![Failed to load the image!](FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
+![Failed to load the image!](./FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
 
 #### **2 Implimentation :**
 ##### **2.1 Schematic**
-![Failed to load the image!](FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
+![Failed to load the image!](./FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
 
 ##### **2.2 Reports :**
 ##### 2.2.1 Power
-![Failed to load the image!](FPGA/SHMCP_4/doc/power.png "Power")
+![Failed to load the image!](./FPGA/SHMCP_4/doc/power.png "Power")
 ##### 2.2.2 Timing
-![Failed to load the image!](FPGA/SHMCP_4/doc/timing.png "Timing")
+![Failed to load the image!](./FPGA/SHMCP_4/doc/timing.png "Timing")
 ##### 2.2.3 Utilization
-![Failed to load the image!](FPGA/SHMCP_4/doc/utilization.png "Utilization")
+![Failed to load the image!](./FPGA/SHMCP_4/doc/utilization.png "Utilization")
 
 ---
 

@@ -8,8 +8,7 @@ The final block of the code which combines all the lower modules to form a proce
 
 #### **CLK generation unit :**
 - Since this is a simple processor design it needs different clocks for programming and executing state, for programming it needs a faster clock to capture load button input but for execution it needs a slower one to observe the actual execution of the code.
-- For more info, 
-
+- For more info,    
     [**CLK Unit**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/FPGA/CLK_generation)
 
 #### **Control unit :** 
@@ -42,7 +41,6 @@ The final block of the code which combines all the lower modules to form a proce
     [**Register file**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/Register_file)    
     [**ALU unit**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/ALU_unit)    
     [**RAM**](https://github.com/ShreyasKombinadka/Simple-Hierarchical-MicroCode-Processor-4bit/tree/main/SIM/RAM)
-
 
 ---
 

@@ -51,4 +51,4 @@ This is the FPGA implimentation dessign of the SHMCP4 for Spartan-7 FPGA.
 ---
  
 ### **Elaborated design**    
-![Failed to load the image!](SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
+![Failed to load the image!](./SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
