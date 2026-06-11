@@ -4,21 +4,21 @@
 A custom 4-bit processor with Harvard architecture and a custom ISA, built from scratch — capable of loading and executing programs on real FPGA hardware.   
 
 **Contents :**
-- [Overview](#Overview)
-- [Features](#Features)
-- [Instruction set](#Instruction-set)
-- [Progress](#Progress)
-- [Results](#Results)
-    - [Simulation](#Simulation)
-        - [Elaborated design](#Elaborated-design)
-        - [Test Programm](#Test-Programm)
-        - [Waveform](#Waveform)
-    - [Implimentation](#Implimentation)
-        - [Schematic](#Schematic)
-        - [Reports](#Reports)
-            - [Power](#Power)
-            - [Timing](#Timing)
-            - [Utilization](#Utilization)
+- [Overview](#overview)
+- [Features](#features)
+- [Instruction set](#instruction-set)
+- [Progress](#progress)
+- [Results](#results)
+    - [Simulation](#simulation)
+        - [Elaborated design](#elaborated-design)
+        - [Test Programm](#test-programm)
+        - [Waveform](#waveform)
+    - [Implimentation](#implimentation)
+        - [Schematic](#schematic)
+        - [Reports](#reports)
+            - [Power](#power)
+            - [Timing](#timing)
+            - [Utilization](#utilization)
 
 ---
  
