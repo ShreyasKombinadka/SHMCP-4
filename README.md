@@ -21,7 +21,7 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
             - [Utilization](#utilization)
 
  
-## Overview :
+## Overview
 - The processor is designed from scratch.
 - It operates on 4-bit data.
 - Has custom ISA built from ground up to perforom specific operations.
@@ -35,7 +35,7 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
     >Will be updated with the video soon..!
 
 
-## Features :
+## Features
 - 4-bit datapath with Harvard architecture.
 - Hierarchical microcode control (3-tier ROM decode).
 - Programmable instruction memory (15 locations).
@@ -45,7 +45,7 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 - Custom ISA optimized for minimal instruction encoding.
 
 
-## Instruction set :
+## Instruction set
 
 | Hex code  | Operation          |
 |:---------:|:------------------:|
@@ -76,15 +76,15 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 | 70 - 7F	| J                  |
 
 
-## Progress : 
+## Progress
 - [x] Design
 - [x] Building in verilog
 - [x] Testing & verification(Vivado)
 - [x] Implementation in FPGA board(Spartan-7)
 
 
-## Results :
-### 1 Simulation :  
+## Results
+### 1 Simulation 
 #### 1.1 Elaborated design  
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
@@ -105,11 +105,11 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 #### 1.3 Waveform
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
 
-### 2 Implimentation :
+### 2 Implimentation
 #### 2.1 Schematic
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
 
-#### 2.2 Reports :
+#### 2.2 Reports
 #### 2.2.1 Power
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/power.png "Power")
 #### 2.2.2 Timing
@@ -117,9 +117,8 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 #### 2.2.3 Utilization
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/utilization.png "Utilization")
 
----
 
-## NOTE :
+## NOTE
 - This is just a simple model for me to learn stuff so it has many flaws and potential failures but designing and building this was very fun and gave me a deeper insight into the hardware design.
 - Also i am building the same design on real hardware using logic IC's on breadboards, its kind of a lagging behind because it takes more time to actually have the design working with real world limitations and problems, so if you wanna check it out heres the link,   
     [**Breadboard-CPU-4bit**](https://github.com/ShreyasKombinadka/Breadboard-CPU-4bit)
