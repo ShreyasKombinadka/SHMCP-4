@@ -89,7 +89,7 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
 #### Test Program
-#### 1. Down counter
+##### Down counter
 | Hex code  | Operation          |
 |:---------:|:------------------:|
 | 0F        | CLEAR              |
