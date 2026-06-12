@@ -21,7 +21,7 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
             - [Utilization](#utilization)
 
  
-## **Overview**
+## Overview
 - The processor is designed from scratch.
 - It operates on 4-bit data.
 - Has custom ISA built from ground up to perforom specific operations.
@@ -35,7 +35,7 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
     >Will be updated with the video soon..!
 
 
-## **Features**
+## Features
 - 4-bit datapath with Harvard architecture.
 - Hierarchical microcode control (3-tier ROM decode).
 - Programmable instruction memory (15 locations).
@@ -45,7 +45,7 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 - Custom ISA optimized for minimal instruction encoding.
 
 
-## **Instruction set**
+## Instruction set
 
 | Hex code  | Operation          |
 |:---------:|:------------------:|
@@ -76,19 +76,19 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 | 70 - 7F	| J                  |
 
 
-## **Progress**
+## Progress
 - [x] Design
 - [x] Building in verilog
 - [x] Testing & verification(Vivado)
 - [x] Implementation in FPGA board(Spartan-7)
 
 
-## **Results**
-### **Simulation**
+## Results
+### Simulation
 #### Elaborated design
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
-#### **Test Program**
+#### Test Program
 #### 1. Down counter
 | Hex code  | Operation          |
 |:---------:|:------------------:|
@@ -102,23 +102,23 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 | 00        | NOP                |
 
 
-#### **Waveform**
+#### Waveform
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
 
 ---
 
-### **Implimentation**
-#### **Schematic**
+### Implimentation
+#### Schematic
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
 
 ***
 
-#### **Reports**
-#### Power
+#### Reports
+##### Power
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/power.png "Power")
-#### Timing
+##### Timing
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/timing.png "Timing")
-#### Utilization
+##### Utilization
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/utilization.png "Utilization")
 
 
