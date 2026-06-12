@@ -9,8 +9,8 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 - [Instruction set](#instruction-set)
 - [Progress](#progress)
 - [Results](#results)
-    - [Simulation](#1-simulation)
-        - [Elaborated design](#1.1 elaborated-design)
+    - [Simulation](#simulation)
+        - [Elaborated design](#elaborated-design)
         - [Test Programm](#test-programm)
         - [Waveform](#waveform)
     - [Implimentation](#implimentation)
@@ -84,8 +84,8 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 
 
 ## Results
-### Simulation 
-#### Elaborated design  
+### Simulation
+#### Elaborated design
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/sim_schematic.png "Elaborated design of SHMCP-4")  
 
 ### Test Program
