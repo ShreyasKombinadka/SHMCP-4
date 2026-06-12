@@ -105,13 +105,9 @@ A custom 4-bit processor with Harvard architecture and a custom ISA, built from 
 #### Waveform
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/waveform.png "Simulation waveform")
 
----
-
 ### Implimentation
 #### Schematic
 ![Failed to load the image!](./FPGA/SHMCP_4/doc/imp_schematic.png "Implimentation schematic")
-
-***
 
 #### Reports
 ##### Power
